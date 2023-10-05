@@ -42,9 +42,9 @@ public class Tarea01_2 {
 				
 			}
 
-		}
+		
 
 
 	}
 
-}
+
