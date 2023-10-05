@@ -1,6 +1,13 @@
 package Tarea01_3;
 
 import java.io.File;
+
+/*Katerin Sanz AD01 Tarea 3
+ * Realiza un programa en Java que lea la cabecera de un fichero ZIP y comprueba si
+realmente se trata de un fichero ZIP o no. Para que sea un ZIP válido la cabecera debe
+comenzar con la siguiente secuencia de bytes {80, 75, 3, 4} (1 punto)
+
+ */
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
