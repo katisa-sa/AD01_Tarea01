@@ -2,7 +2,9 @@ package Tarea01_1;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -16,9 +18,13 @@ public class Tarea01_1 {
 
 	public static void main(String[] args) {
 		//Creamos un String con la direccion del fichero
-		String fic = "." + File.separator + "src" + File.separator +"Tarea01_1" + File.separator +"Texto.txt";
+		String dir = "." + File.separator + "src" + File.separator +"Tarea01_1" + File.separator +"Texto.txt";
+		String dir2 = "." + File.separator + "src" + File.separator +"Tarea01_1" + File.separator +"Texto2.txt";
 		// Realizamos una lectura del texto del fichero
-		try (FileReader fr = new FileReader(new File (fic))){
+		try (FileReader fr = new FileReader(new File (dir))){
+			File fic2 = new File (dir2);
+			FileWriter fw = new FileWriter(fic2);
+			fic2.createNewFile();
 			int i = 1;
 			char letra = 0;
 			List<Character> listaChar = new ArrayList<Character>();
@@ -30,9 +36,17 @@ public class Tarea01_1 {
 			//Iteramos la lista del reves
 			ListIterator li = listaChar.listIterator(listaChar.size());
 			
+			PrintWriter writer = new PrintWriter(fw);
+			//Escribimos en el nuevo fichero
 			while(li.hasPrevious()) {
-			  System.out.print(li.previous());
-			}
+				writer.print(li.previous());
+			  
+			} 
+			 
+			writer.close();
+			fr.close();
+			fw.close();
+			
 						
 		}catch (IOException ex) {
 	        ex.printStackTrace();
