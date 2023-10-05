@@ -96,7 +96,7 @@ public class Tarea01_4c {
 					contador = contador + 1;
 				} 
 		}	if(! existeTipo) {
-			System.out.println("El tipo introducido no existe.");
+			System.out.println("No existe "+ tipoConsola+ " en el fichero.");
 		} else {
 			System.out.println("Hay " + contador + " personajes del tipo " + tipoConsola + ".");
 			}
