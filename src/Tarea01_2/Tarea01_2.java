@@ -7,44 +7,52 @@ palíndroma es aquella que se lee igual de izquierda a derecha que de derecha a 
  */
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
 
 public class Tarea01_2 {
 
 	public static void main(String[] args) {
-		//Creamos un String con la direccion del fichero
-				String fic = "." + File.separator + "src" + File.separator +"Tarea01_2" + File.separator +"Texto.txt";
-				// Realizamos una lectura del texto del fichero
-				try (BufferedReader br = new BufferedReader (new FileReader(new File (fic)))){
-					int i = 1;
-					char letra = 0;
-					List<Character> listaChar = new ArrayList<Character>();
-					//Leemos cada caracter del fichero y lo añadimos a una lista de caracteres
-					while ((i = fr.read())!=-1) {
-						letra = (char)i;
-						listaChar.add(letra);
-					}	
-					//Iteramos la lista del reves
-					ListIterator li = listaChar.listIterator(listaChar.size());
-					
-					while(li.hasPrevious()) {
-					  System.out.print(li.previous());
-					}
-								
+		//Creamos String con las direcciones de los ficheros
+		String dir = "." + File.separator + "src" + File.separator +"Tarea01_2" + File.separator +"Texto.txt";
+		String dir2 = "." + File.separator + "src" + File.separator +"Tarea01_2" + File.separator +"palindromos.txt";
+				
+				try {
+					//Creamos los flujos de entrada y salida
+					BufferedReader br = new BufferedReader (new FileReader(new File (dir)));
+					BufferedWriter bw = new BufferedWriter (new FileWriter(dir2));
+					// Realizamos una lectura del texto del fichero
+					String lineaLeida = br.readLine();
+					//Dividimos la frase en palabras
+					String[] lineas =  lineaLeida.split(" ");
+					//Cerramos flujo de entrada
+					br.close();
+					//Recorremos las palabras una por una
+					for (String linea : lineas) {
+						// Convertimos a minúscula y quitamos espacios " " y puntos "." 
+						
+						linea = linea.toLowerCase().replace(".", "");
+						// Invertimos la cadena, y si es igual que la original entonces son palíndromos
+						String invertida = new StringBuilder(linea).reverse().toString();
+						
+						if (invertida.equals(linea)) {
+							//Escribimos en el nuevo fichero si es palindromo
+								System.out.print("Es palindromo: " );
+								System.out.println(linea);
+								bw.write(linea + ", ");
+							}
+						}bw.close();
+				//capturamos posibles excepciones
 				}catch (IOException ex) {
 			        ex.printStackTrace();
 				}
 				
 			}
 
-		
-
-
+	
 	}
 
 
