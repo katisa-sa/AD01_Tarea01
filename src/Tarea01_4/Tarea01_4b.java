@@ -33,8 +33,7 @@ public class Tarea01_4b {
 				// Pedimos DNI y peso por consola
 				System.out.println("Introduzca el DNI del personaje:");
 				dniConsola = Consola.readString();	
-				System.out.println("Introduzca el peso del personaje del último mes:");
-				pesoConsola = Consola.readInt();
+				
 				
 				//Recorremos los datos para comparar Dni
 				for (int p = 0; p < fich.length(); p+=longitud) {
@@ -62,33 +61,31 @@ public class Tarea01_4b {
 					
 					//Comparamos DNI
 					if (dniFich.equalsIgnoreCase(dniConsola)) {
-						
-						//Si coinciden DNI comprobamos que existan
 						existeDni = true;
-						
 						//Comparamos peso introducido con el que tenemos en fichero
+						System.out.println("Introduzca el peso del personaje del último mes:");
+						pesoConsola = Consola.readInt();					
 						if ( pesoConsola < pesoFich ) {
 							int pesoDif = pesoFich - pesoConsola;
 							System.out.println( nombreFich +" ha adelgazado "+pesoDif+" kilos.");
 							} else if ( pesoConsola > pesoFich ) {
 								int pesoDif = pesoConsola - pesoFich;
 								System.out.println( nombreFich +" ha engordado "+pesoDif+" kilos.");
-								} else {
+								} else if (pesoConsola == pesoFich){
 									System.out.println( nombreFich +" tiene el mismo peso.");
 									} 
-						
-					if (!existeDni) {
-						//Si no existe personaje manda mensaje
-						System.out.println("El personaje no existe.");
-						} 
-					}
-				}
-					raf.close();
+						}	
+					
+				} 
+			if (!existeDni) {
+					//Si no existe personaje manda mensaje
+				System.out.println("El personaje no existe.");
+				} 
 				
-				} catch (FileNotFoundException e){}
+			raf.close();
 				
-			
-		}
+		} catch (FileNotFoundException e){}
 	}
+}
 		
 
