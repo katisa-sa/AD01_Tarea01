@@ -20,10 +20,10 @@ public class Tarea01_4a {
 	public static void main(String[] args) throws IOException{
 		String dir = "." + File.separator + "src" + File.separator + "Tarea01_4" + File.separator + "Marvel.dat";
 		File fich = new File (dir);
-		//Declcara fichero de acceso aleatorio
+		//Declara fichero de acceso aleatorio
 		RandomAccessFile raf = new RandomAccessFile (fich, "rw");
 		
-		//introducimos los datos con Array
+		//introducimos los datos 
 		int [] ids= {1, 2, 3, 4, 5, 6, 7};
 		String[] dnis= {"01010101A", "03030303C", "05050505E", "07070707G", "02020202B", "04040404D", "06060606F"};
 		String[] noms= {"Spiderman", "Green Goblin", "Storm", "Wolverine", "Mystique", "IronMan", "Mandarin"};
@@ -66,12 +66,12 @@ public class Tarea01_4a {
 				raf.writeInt(pesos[i]);//insertar peso
 				raf.writeInt(alturas[i]);//insertar altura
 			
-		}//Compruebo si los datos se han cargado correctamente
+				}//Comprobamos si los datos se han cargado correctamente
 		if (posicion != (longi * (p-1))) {
 			System.out.print("La carga de los personajes ha terminado correctamente");
-		} else {
-			System.out.print("La carga de los personajes no se ha realizado");
-		}
+			} else {
+				System.out.print("La carga de los personajes no se ha realizado");
+			}
 		}catch (IOException e) {
 			e.printStackTrace();
 		}	
